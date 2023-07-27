@@ -9,6 +9,8 @@ return new class extends Migration
     /**
      * Run the migrations.
      */
+    protected $fillable = ['qty', /* other fillable attributes */];
+
     public function up(): void
     {
         Schema::create('detailtransaksis', function (Blueprint $table) {
@@ -16,7 +18,9 @@ return new class extends Migration
             $table->foreignId('user_id')->constrained()->cascadeOnDelete()->cascadeOnUpdate();
             $table->foreignId('produk_id')->constrained()->cascadeOnDelete()->cascadeOnUpdate();
             $table->foreignId('transaksi_id')->constrained()->cascadeOnDelete()->cascadeOnUpdate();
-            $table->integer('qty');
+            $table->integer('qty')->fillable();
+            $table->enum('status', ['keranjang', 'checkout']);
+            $table->string('totalharga');
             $table->timestamps();
         });
     }

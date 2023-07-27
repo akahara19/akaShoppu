@@ -8,10 +8,11 @@
     <link rel="stylesheet" href="css/bootstrap.min.css">
 </head>
 <body>
+    @include('layouts.nav')
     <div class="container">
         @yield('container')
     </div>
-
+    @include('layouts.footer')
     <script src="js/bootstrap.min.js"></script>
 </body>
 </html>

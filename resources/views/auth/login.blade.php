@@ -52,12 +52,16 @@
     <body>
         <div class="container login-container">
             <h2 class="login-title">Login</h2>
-            <form class="login-form">
+            <form class="login-form" action="{{ route('postLogin') }}" method="POST">
+                @csrf
                 <div class="mb-3">
-                    <input type="email" class="form-control" id="email" placeholder="Email" required>
+                    <input type="email" name="email" class="form-control" id="email" placeholder="Email" required>
                 </div>
                 <div class="mb-3">
-                    <input type="password" class="form-control" id="password" placeholder="Password" required>
+                    <input type="password" name="password" class="form-control" id="password" placeholder="Password" required>
+                    @if (Session::has('status'))
+                        <div><span class="text-danger">{{ Session::get('status') }}</span></div>
+                    @endif
                 </div>
                 <button type="submit" class="btn btn-primary">Login</button>
             </form>

@@ -16,6 +16,10 @@ class User extends Authenticatable
         return $this->hasMany(Detailtransaksi::class);
     }
 
+    function transaksi() {
+        return $this->belongsTo(Transaksi::class);
+    }
+
     /**
      * The attributes that are mass assignable.
      *
