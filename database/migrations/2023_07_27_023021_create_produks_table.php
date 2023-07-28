@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('kategori_id')->constrained()->cascadeOnDelete()->cascadeOnUpdate();
             $table->string('name');
-            $table->string('price');
+            $table->integer('price');
             $table->string('image');
             $table->timestamps();
         });

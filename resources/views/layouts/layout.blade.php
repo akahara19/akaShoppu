@@ -9,7 +9,7 @@
 </head>
 <body>
     @include('layouts.nav')
-    <div class="container">
+    <div class="container" style="min-height: 80vh;">
         @yield('container')
     </div>
     @include('layouts.footer')

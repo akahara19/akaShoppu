@@ -15,11 +15,15 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
-Route::get('/', [ProductController::class, 'index']);
+
+Route::get('/', [ProductController::class, 'index'])->name('home');
 Route::get('/product{id}', [ProductController::class, 'show'])->name('show');
-Route::get('/login', [AuthController::class, 'showLoginForm'])->name('showLogin');
+Route::get('/login', [AuthController::class, 'showLogin'])->name('showLogin');
 Route::post('/login', [AuthController::class, 'login'])->name('postLogin');
-Route::middleware('auth')->group(function() {
+Route::middleware('auth')->group(function () {
     Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
-    Route::post('postCart/{produk}', [UserController::class, 'postCart'])->name('customer.cart');
+    Route::get('customer/cart', [UserController::class, 'cart'])->name('cart');
+    Route::post('/postcart/{produk}', [UserController::class, 'postCart'])->name('customer.postcart');
+    Route::get('/pay{detailtransaksi}', [UserController::class, 'pay'])->name('customer.pay');
+    Route::post('/payprocess{detailtransaksi}', [UserController::class, 'payprocess'])->name('customer.payprocess');
 });

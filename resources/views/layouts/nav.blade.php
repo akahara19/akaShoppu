@@ -20,7 +20,7 @@
                     <a class="nav-link" aria-current="page" href="/">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Products</a>
+                    <a class="nav-link" href="{{ route('cart') }}">Cart</a>
                 </li>
             </ul>
             <ul class="navbar-nav">
@@ -28,7 +28,7 @@
                     <a class="btn border text-white" href="{{ route('showLogin') }}">Login</a>
                 </li>
                 <li class="nav-item"> 
-                    <a class="btn border text-white" href="">Logout</a>
+                    <a class="btn border text-white" href="{{ route('logout') }}">Logout</a>
                 </li>
             </ul>
         </div>

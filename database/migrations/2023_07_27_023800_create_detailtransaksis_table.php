@@ -17,10 +17,10 @@ return new class extends Migration
             $table->id();
             $table->foreignId('user_id')->constrained()->cascadeOnDelete()->cascadeOnUpdate();
             $table->foreignId('produk_id')->constrained()->cascadeOnDelete()->cascadeOnUpdate();
-            $table->foreignId('transaksi_id')->constrained()->cascadeOnDelete()->cascadeOnUpdate();
+            $table->foreignId('transaksi_id')->nullable()->constrained('transaksis');
             $table->integer('qty')->fillable();
             $table->enum('status', ['keranjang', 'checkout']);
-            $table->string('totalharga');
+            $table->integer('totalharga');
             $table->timestamps();
         });
     }

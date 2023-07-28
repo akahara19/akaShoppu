@@ -1,8 +1,9 @@
 @extends('layouts.layout')
 
 @section('container')
-    <form action="{{ route('customer.cart', $data->id) }}" method="POST">
+    <form action="{{ route('customer.postcart', $data->id) }}" method="POST">
         @csrf
+        @method('POST')
         <div class="row">
             <div class="col-4">
                 <div class="card">
@@ -18,7 +19,8 @@
                         <input type="number" name="jumlah" class="form-control" placeholder="Jumlah" required>
                         <hr>
                         <h4>Keterangan</h4>
-                        <p>Ini merupakan detail dari barang yang akan di beli, silahkan pelajari dengan seksama. Barang yang sudah dibeli tidak dapat dikembalikan</p>
+                        <p>Ini merupakan detail dari barang yang akan di beli, silahkan pelajari dengan seksama. Barang yang
+                            sudah dibeli tidak dapat dikembalikan</p>
                     </div>
                 </div>
             </div>
@@ -30,7 +32,7 @@
                         <img src="" alt="" class="img-card-top">
                     </div>
                 </div>
-                <button class="btn btn-success mt-3 form-control">Beli</button>
+                <button type="submit" class="btn btn-success mt-3 form-control">Beli</button>
             </div>
         </div>
     </form>

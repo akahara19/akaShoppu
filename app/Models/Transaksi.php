@@ -8,12 +8,12 @@ use Illuminate\Database\Eloquent\Model;
 class Transaksi extends Model
 {
     use HasFactory;
-
+    protected $guarded = ["id"];
     function detailtransaksi() {
         return $this->hasMany(Detailtransaksi::class);
     }
 
     function user() {
-        return $this->hasOne(User::class);
+        return $this->belongsTo(User::class);
     }
 }
