@@ -24,7 +24,7 @@
                 @auth
                     @if (auth()->user()->role == 'admin')
                         <li class="nav-item">
-                            <a href="" class="nav-link">Produk</a>
+                            <a href="{{ route('admin.produk') }}" class="nav-link">Produk</a>
                         </li>
                     @else
                         <li class="nav-item">

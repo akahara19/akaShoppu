@@ -32,4 +32,6 @@ Route::middleware('auth')->group(function () {
     Route::post('/payprocess{detailtransaksi}', [UserController::class, 'payprocess'])->name('customer.payprocess');
     Route::get('/summary', [UserController::class, 'summary'])->name('customer.summary');
     Route::get('/admin/produk', [AdminController::class, 'index'])->name('admin.produk');
+    Route::get('/admin/addproductpage', [AdminController::class, 'showAdd'])->name('admin.showadd');
+    Route::post('/admin/addproduct', [AdminController::class, 'storeProduct'])->name('admin.storeproduct');
 });

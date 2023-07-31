@@ -6,7 +6,7 @@
 
 @section('container')
     <div class="container mt-5">
-        <a href="" class="btn-btn-primary">Add Product</a>
+        <a href="{{ route('admin.showadd') }}" class="btn btn-primary">Add Product</a>
         <table class="table table-responsive-sm mt-3">
             <thead>
                 <tr>
