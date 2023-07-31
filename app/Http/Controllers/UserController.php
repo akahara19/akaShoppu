@@ -58,6 +58,12 @@ class UserController extends Controller
             'bukti' => $request->bukti->store('images'),
         ]);
 
-        return redirect()->route('cart')->with('status', 'Berhasil Checkout/Upload Bukti');
+        return redirect()->route('customer.summary')->with('status', 'Berhasil Checkout/Upload Bukti');
+    }
+
+    public function summary (Request $request) {
+        $detailtransaksi = Detailtransaksi::where('user_id', auth()->id())->where('status', 'checkout')->get();
+
+        return view('summary', compact('detailtransaksi'));
     }
 }

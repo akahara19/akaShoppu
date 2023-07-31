@@ -1,9 +1,9 @@
 <style>
-    .accent{
+    .accent {
         background: linear-gradient(130deg, #3686bb, #a834f5);
     }
 
-    .btn{
+    .btn {
         stroke: greenyellow;
     }
 </style>
@@ -17,19 +17,36 @@
         <div class="collapse navbar-collapse d-flex justify-content-between" id="navbarNav">
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a class="nav-link" aria-current="page" href="/">Home</a>
+                    @guest
+                        <a class="nav-link" aria-current="page" href="{{ route('home') }}">Home</a>
+                    @endguest
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ route('cart') }}">Cart</a>
-                </li>
+                @auth
+                    @if (auth()->user()->role == 'admin')
+                        <li class="nav-item">
+                            <a href="" class="nav-link">Produk</a>
+                        </li>
+                    @else
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('cart') }}">Cart</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('customer.summary') }}">Summary</a>
+                        </li>
+                    @endif
+                @endauth
             </ul>
             <ul class="navbar-nav">
-                <li class="nav-item"> 
-                    <a class="btn border text-white" href="{{ route('showLogin') }}">Login</a>
+                <li class="nav-item">
+                    @guest
+                        <a class="btn border text-white" href="{{ route('showLogin') }}">Login</a>
+                    @endguest
                 </li>
-                <li class="nav-item"> 
-                    <a class="btn border text-white" href="{{ route('logout') }}">Logout</a>
-                </li>
+                @auth
+                    <li class="nav-item">
+                        <a class="btn border text-white" href="{{ route('logout') }}">Logout</a>
+                    </li>
+                @endauth
             </ul>
         </div>
     </div>
