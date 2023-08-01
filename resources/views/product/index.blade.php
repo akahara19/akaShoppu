@@ -3,7 +3,7 @@
 @section('container')
     <div class="container mt-5">
         <a href="{{ route('showadd') }}" class="btn btn-primary">Add Product</a>
-        <table class="table table-responsive-sm mt-3">
+        <table class="table table-striped table-hover table-responsive-sm mt-3">
             <thead>
                 <tr>
                     <th>Image</th>
@@ -13,16 +13,20 @@
                 </tr>
             </thead>
             <tbody>
-                @foreach ($produks as $produk)
+                @foreach ($produks as $produk)  
                     <tr>
                         <td>
-                            <img src="{{ if() }}" alt="" width="100">
+                            <img src="{{ url('images/' . $produk->image) }}" alt="Gambar" width="100">
                         </td>
                         <td>{{ $produk->name }}</td>
                         <td>{{ number_format($produk->price, 0 , ',' , '.') }}</td>
-                        <td>
-                            <a href="" class="btn btn-warning">Edit</a>
-                            <a href="" class="btn btn-danger">Delete</a>
+                        <td class="">
+                            <a href="{{ route('showEdit', $produk->id) }}" class="btn btn-warning shadow">Edit</a>
+                            <form action="{{ route('delete', $produk->id) }}" method="POST" class="" style="display: inline">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit" class="btn btn-danger shadow" onclick="return confirm('Are you sure to delete product?')">Delete</button>
+                            </form>                            
                         </td>
                     </tr>
                 @endforeach

@@ -11,7 +11,7 @@
                         <form action="{{ route('add') }}" method="POST" enctype="multipart/form-data">
                             @csrf
                             @method('post')
-                            <h3 class="text-center">Silahkan Isi Data Produk</h3>
+                            <h3 class="text-center">Add New Product Data</h3>
                             <hr>
                             <div class="mb-3">
                                 <label for="name" class="form-label">Product Name</label>

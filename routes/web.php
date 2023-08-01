@@ -31,7 +31,10 @@ Route::middleware('auth')->group(function () {
     Route::get('/pay{detailtransaksi}', [UserController::class, 'pay'])->name('customer.pay');
     Route::post('/payprocess{detailtransaksi}', [UserController::class, 'payprocess'])->name('customer.payprocess');
     Route::get('/summary', [UserController::class, 'summary'])->name('customer.summary');
-    Route::get('/admin/produk', [AdminController::class, 'index'])->name('admin.produk');
+    Route::get('/admin/produk', [AdminController::class, 'index'])->name('admin.produk');   
     Route::get('/admin/addpage', [AdminController::class, 'showAdd'])->name('showadd');
     Route::post('/admin/add', [AdminController::class, 'add'])->name('add');
+    Route::get('/admin/editproduk/{produk}', [AdminController::class, 'showEdit'])->name('showEdit');
+    Route::put('/admin/update/{produk}', [AdminController::class, 'update'])->name('update');
+    Route::delete('/admin/delete/{produk}', [AdminController::class, 'delete'])->name('delete');
 });
