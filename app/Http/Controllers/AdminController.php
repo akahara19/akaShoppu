@@ -11,7 +11,9 @@ class AdminController extends Controller
     public function index()
     {
         $produks = Produk::paginate(10);
-        return view('product.index', compact('produks'));
+        $imageArray = ['narutoshirt.jpg', 'rog6.jpg', 'burger.png'];
+        return view('product.index', compact('produks', 'imageArray'));
+
     }
 
     public function showAdd(Kategori $kategori)
@@ -20,20 +22,20 @@ class AdminController extends Controller
         return view('product.add', compact('kategoris'));
     }
 
-    public function storeProduct(Request $request)
+    function add(Request $request)
     {
         $request->validate([
-            'kategori_id' => 'required',
             'name' => 'required',
             'price' => 'required',
             'image' => 'required|file',
+            'kategori_id' => 'required',
         ]);
 
         Produk::create([
-            'kategori_id' => $request->kategori_id,
             'name' => $request->name,
             'price' => $request->price,
             'image' => $request->image->store('images'),
+            'kategori_id' => $request->kategori_id,
         ]);
 
         return redirect()->route('admin.produk');
