@@ -45,7 +45,7 @@
             @foreach ($data as $item)
                 <div class="col-2 mt-5">
                     <div class="card shadow">
-                        <img src="images/{{ $item->image }}" alt="" class="img-card-top" style="min-height: 200px; object-fit: cover
+                        <img src="images/{{ $item->image }}" alt="" class="img-card-top p-3" style="min-height: 200px; object-fit: cover
                         2">
                         <div class="card-body">
                             <h6 class="card-title">{{ $item->name }}</h6>

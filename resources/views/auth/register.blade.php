@@ -24,8 +24,9 @@
                             </div>
                 
                             <div class="d-flex justify-content-end pt-4">
-                                <button type="submit" class="btn btn-primary w-25 shadow">Daftar</button>
+                                <button type="submit" class="btn btn-primary w-25 shadow">Register</button>
                             </div>
+                            <p class="card-text text-center pt-2">Already have an account? <a href="{{ route('showLogin') }}" class="text-decoration-none">Login</a></p>
                         </form>
                     </div>
                 </div>

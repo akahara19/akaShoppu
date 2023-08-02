@@ -34,8 +34,8 @@
                                 <div><span class="text-danger">{{ Session::get('status') }}</span></div>
                             @endif
                         </div>
-                        <button type="submit" class="btn btn-primary w-100">Login</button>
-                        <p class="card-text text-center pt-2">Don't have an account? <a href="{{ route('register') }}" class="text-decoration-none">Sign Up</a></p>
+                        <button type="submit" class="btn btn-primary w-100 shadow">Login</button>
+                        <p class="card-text text-center pt-3">Don't have an account? <a href="{{ route('register') }}" class="text-decoration-none">Sign Up</a></p>
                     </form>
                 </div>
             </div>

@@ -7,9 +7,9 @@
         stroke: greenyellow;
     }
 </style>
-<nav class="navbar navbar-expand-lg navbar-dark accent mb-5">
+<nav class="navbar navbar-expand-lg navbar-dark accent mb-5 fixed-top shadow">
     <div class="container-fluid px-5">
-        <a class="navbar-brand" href="/">akaShoppu</a>
+        <a class="navbar-brand" href="/"><img src="{{ asset('images/logo/aka.png') }}" alt="" width="230" class=""></a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
             aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>

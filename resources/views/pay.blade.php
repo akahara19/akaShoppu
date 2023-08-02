@@ -8,18 +8,18 @@
             <hr>
             <div class="row">
                 <div class="col-4">
-                    <div class="card">
-                        <img src="{{ asset('images/' . $produk->image) }}" alt="" class="card-img-top">
+                    <div class="card shadow-sm">
+                        <img src="{{ asset('images/' . $produk->image) }}" alt="" class="card-img-top p-5">
                     </div>
                 </div>
 
                 <div class="col-8">
-                    <div class="card">
+                    <div class="card shadow-sm">
                         <div class="card-body">
                             <h3 class="card-title">{{ $produk->name }}</h3>
                             <hr>
                             <p class="card-text">Harga: Rp. {{ number_format($produk->price, 0 , ',' , '.') }}</p>
-                            <p class="card-text">Total Harga: Rp. {{ number_format($detailtransaksi->totalharga, 0 , ',' , '.') }}</p>
+                            <p class="card-text">Total Harga: Rp. <b>{{ number_format($detailtransaksi->totalharga, 0 , ',' , '.') }}</b></p>
                             <p class="card-text">Jumlah :  {{ $detailtransaksi->qty }}</p>
                             <hr>
                             <div class="mb-3">
@@ -30,7 +30,7 @@
                                 <hr>
                                 <h5>Keterangan : </h5>
                                 <p>Silahkan lakukan tranfer ke bank berikut dan tunggu konfirmasi dari kami</p>
-                                <button type="submit" class="btn btn-success">Upload</button>
+                                <button type="submit" class="btn btn-primary shadow">Upload</button>
                             </div>
                         </div>
                     </div>

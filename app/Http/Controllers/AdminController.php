@@ -64,27 +64,27 @@ class AdminController extends Controller
             'image' => 'nullable|file',
             'kategori_id' => 'nullable',
         ]);
-        $filename = date('Y-m-d') . '_' . uniqid() . '.' . $request->file('image')->getClientOriginalExtension();
 
-        // Simpan gambar ke direktori public/images dengan nama yang sudah dibuat
-        $request->file('image')->storeAs('images', $filename, 'public');
-
-        // Gunakan fungsi fill() pada model untuk mengisi atribut dari request
         $produk->fill([
             'name' => $request->name,
             'price' => $request->price,
             'kategori_id' => $request->kategori_id,
-            'image' => 'images/' . $filename,
         ]);
 
-        // Cek apakah ada file gambar baru yang diunggah
         if ($request->hasFile('image')) {
-            // $imagePath = $request->file('image')->store('images');
-            // $produk->image = $imagePath;
-            
+            $filename = date('Y-m-d') . '_' . uniqid() . '.' . $request->file('image')->getClientOriginalExtension();
+
+            // Simpan gambar ke direktori public/images dengan nama yang sudah dibuat
+            $request->file('image')->storeAs('images', $filename, 'public');
+
+            // Hapus gambar lama jika ada
+            if ($produk->image) {
+                Storage::disk('public')->delete($produk->image);
+            }
+
+            $produk->image = 'images/' . $filename;
         }
 
-        // Simpan perubahan ke database
         $produk->save();
 
         return redirect()->route('admin.produk')->with('success', 'Produk berhasil diperbarui.');

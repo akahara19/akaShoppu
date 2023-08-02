@@ -16,6 +16,11 @@ class UserController extends Controller
         $request->validate([
             'jumlah' => 'required',
         ]);
+
+        if (auth()->user()->role == 'admin'){
+            return redirect()->back()->with('message', 'Maaf, Barang hanya bisa dibeli oleh User');
+        }
+
         DetailTransaksi::create(
             [
                 'qty' => $request->jumlah,  

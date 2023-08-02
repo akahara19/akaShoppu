@@ -14,10 +14,10 @@
     <div class="container mt-5 px-5">
         <h4>Cart</h4>
         @foreach ($detailtransaksi as $item)
-            <div class="card mt-3">
+            <div class="card mt-3 p-4 shadow-sm">
                 <div class="row">
                     <div class="col p-2">
-                        <img src="{{ asset('images/' . $item->produk->image) }}" class="card-img p-2 rounded-5 h-100" style="object-fit: cover">
+                        <img src="{{ asset('images/' . $item->produk->image) }}" class="card-img p-2  h-100 img-thumbnail shadow" style="object-fit: cover">
                     </div>
 
                     <div class="col-8">
@@ -27,12 +27,12 @@
                             <p class="card-text">Harga Rp.{{ number_format($item->produk->price, 0, ',', '.') }}</p>
                             <input type="number" name="jumlah" class="form-control" value="{{ $item->qty }}" required>
                             <hr>
-                            <p class="card-text">Total Harga Rp. {{ number_format($item->totalharga, 0, ',', '.') }} </p>
+                            <p class="card-text">Total Harga Rp. <b>{{ number_format($item->totalharga, 0, ',', '.') }}</b> </p>
                         </div>
                     </div>
 
                     <div class="col-2 p-4">
-                        <a href="{{ route('customer.pay', $item->id) }}" class="btn btn-primary text-white">Pay</a>
+                        <a href="{{ route('customer.pay', $item->id) }}" class="btn btn-primary text-white shadow">Pay</a>
                     </div>
                 </div>
             </div>
