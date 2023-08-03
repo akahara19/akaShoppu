@@ -17,13 +17,13 @@ class UserController extends Controller
             'jumlah' => 'required',
         ]);
 
-        if (auth()->user()->role == 'admin'){
+        if (auth()->user()->role == 'admin') {
             return redirect()->back()->with('message', 'Maaf, Barang hanya bisa dibeli oleh User');
         }
 
         DetailTransaksi::create(
             [
-                'qty' => $request->jumlah,  
+                'qty' => $request->jumlah,
                 'user_id' => Auth::id(),
                 'produk_id' => $produk->id,
                 'status' => 'keranjang',
@@ -41,12 +41,14 @@ class UserController extends Controller
         return view('cart', compact('detailtransaksi'));
     }
 
-    function pay(Request $request, Detailtransaksi $detailtransaksi) {
+    function pay(Request $request, Detailtransaksi $detailtransaksi)
+    {
         $produk = $detailtransaksi->produk;
         return view('pay', compact('produk', 'detailtransaksi'));
     }
 
-    public function payprocess(Request $request, Detailtransaksi $detailtransaksi) {
+    public function payprocess(Request $request, Detailtransaksi $detailtransaksi)
+    {
         $request->validate([
             'bukti' => 'required|file'
         ]);
@@ -54,7 +56,7 @@ class UserController extends Controller
         $transaksi = Transaksi::create([
             'user_id' => auth()->id(),
             'totalharga' => $detailtransaksi->totalharga,
-            'kode' => 'INV'.Str::random(10)
+            'kode' => 'INV' . Str::random(10)
         ]);
 
         $detailtransaksi->update([
@@ -66,7 +68,8 @@ class UserController extends Controller
         return redirect()->route('customer.summary')->with('status', 'Berhasil Checkout/Upload Bukti');
     }
 
-    public function summary (Request $request) {
+    public function summary(Request $request)
+    {
         $detailtransaksi = Detailtransaksi::where('user_id', auth()->id())->where('status', 'checkout')->get();
 
         return view('summary', compact('detailtransaksi'));

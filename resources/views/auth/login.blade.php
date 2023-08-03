@@ -25,17 +25,19 @@
                     <form class="login-form" action="{{ route('postLogin') }}" method="POST">
                         @csrf
                         <div class="mb-3">
-                            <input type="email" name="email" class="form-control" id="email" placeholder="Email" required>
+                            <input type="email" name="email" class="form-control" id="email" placeholder="Email"
+                                required>
                         </div>
                         <div class="mb-3">
-                            <input type="password" name="password" class="form-control" id="password" placeholder="Password"
-                                required>
+                            <input type="password" name="password" class="form-control" id="password"
+                                placeholder="Password" required>
                             @if (Session::has('status'))
                                 <div><span class="text-danger">{{ Session::get('status') }}</span></div>
                             @endif
                         </div>
                         <button type="submit" class="btn btn-primary w-100 shadow">Login</button>
-                        <p class="card-text text-center pt-3">Don't have an account? <a href="{{ route('register') }}" class="text-decoration-none">Sign Up</a></p>
+                        <p class="card-text text-center pt-3">Don't have an account? <a href="{{ route('register') }}"
+                                class="text-decoration-none">Sign Up</a></p>
                     </form>
                 </div>
             </div>
